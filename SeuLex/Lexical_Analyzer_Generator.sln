@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Lexical_Analyzer_Generator", "Lexical_Analyzer_Generator\Lexical_Analyzer_Generator.vcxproj", "{E1B88256-611D-4E28-89A9-87578DC3E938}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E1B88256-611D-4E28-89A9-87578DC3E938}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E1B88256-611D-4E28-89A9-87578DC3E938}.Debug|Win32.Build.0 = Debug|Win32
+		{E1B88256-611D-4E28-89A9-87578DC3E938}.Release|Win32.ActiveCfg = Release|Win32
+		{E1B88256-611D-4E28-89A9-87578DC3E938}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
