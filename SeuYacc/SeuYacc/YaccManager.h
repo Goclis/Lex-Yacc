@@ -19,34 +19,34 @@ public:
     YaccManager(void);
     ~YaccManager(void);
     
-    // ¶ÁÈë.yÎÄ¼þ½øÐÐ½âÎö
+    // ï¿½ï¿½ï¿½ï¿½.yï¿½Ä¼ï¿½ï¿½ï¿½ï¿½Ð½ï¿½ï¿½ï¿½
     void read_from_definition_file(char *filename);
 
-    // Çó±Õ°ü
+    // ï¿½ï¿½ï¿½Õ°ï¿½
     Item closure(Item &item);
 
     // goto
     Item _goto(const Item &item, const Symbol &symbol);
 
-    // first(µ¥¸öÎÄ·¨·ûºÅ)
+    // first(ï¿½ï¿½ï¿½ï¿½ï¿½Ä·ï¿½ï¿½ï¿½ï¿½ï¿½)
     vector<Symbol> first(const Symbol &symbol);
 
-    // first(ÎÄ·¨·ûºÅ´®)
+    // first(ï¿½Ä·ï¿½ï¿½ï¿½ï¿½Å´ï¿½)
     vector<Symbol> first_beta_a(const vector<Symbol> &symbols);
 
-    // Éú³ÉËùÓÐÏî
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     void generate_items();
 
-    // Éú³É½âÎö±í£¬Ç°ÌáÊÇÒÑÉú³ÉÏî
+    // ï¿½ï¿½ï¿½É½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     void generate_parsing_table();
 
-    // ½â¾öÒÑÉú³É½âÎö±íÖÐµÄ³åÍ»
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÐµÄ³ï¿½Í»
     void fix_conflict();
 
     void generate_code();
 
     // driver
-    void run();
+    void run(char *filename);
     
     // public setter and test_run
     void set_productions(const vector<Production> &ps);
@@ -54,33 +54,33 @@ public:
     void set_priorities(const map<string, Priority> &ps);
     void test_run();
 private:
-    vector<Production> productions; // ²úÉúÊ½¼¯ºÏ
-    vector<Symbol> symbols; // ÎÄ·¨·ûºÅ¼¯ºÏ
-    vector<Item> items; // Ïî¼¯ºÏ
-    vector<map<string, int>> goto_table; // goto±í
-    vector<map<string, string>> action; // action±í
-    map<string, Priority> priorities; // ÓÅÏÈ¼¶¹ØÏµ
-    map<string, vector<Symbol>> first_set; // »º´æfirst£¬¿Õ¼ä»»Ê±¼ä
-	streambuf *log_file; // ÈÕÖ¾ÎÄ¼þ
+    vector<Production> productions; // ï¿½ï¿½ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½
+    vector<Symbol> symbols; // ï¿½Ä·ï¿½ï¿½ï¿½ï¿½Å¼ï¿½ï¿½ï¿½
+    vector<Item> items; // ï¿½î¼¯ï¿½ï¿½
+    vector<map<string, int>> goto_table; // gotoï¿½ï¿½
+    vector<map<string, string>> action; // actionï¿½ï¿½
+    map<string, Priority> priorities; // ï¿½ï¿½ï¿½È¼ï¿½ï¿½ï¿½Ïµ
+    map<string, vector<Symbol>> first_set; // ï¿½ï¿½ï¿½ï¿½firstï¿½ï¿½ï¿½Õ¼ä»»Ê±ï¿½ï¿½
+	streambuf *log_file; // ï¿½ï¿½Ö¾ï¿½Ä¼ï¿½
     
     /* Helper Functions */
 
-    // ÅÐ¶ÏÄ³¸öÎÄ·¨·ûºÅÊÇ·ñÔÚÄ³ÎÄ·¨·ûºÅ¼¯ºÏÖÐ
+    // ï¿½Ð¶ï¿½Ä³ï¿½ï¿½ï¿½Ä·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Ä³ï¿½Ä·ï¿½ï¿½ï¿½ï¿½Å¼ï¿½ï¿½ï¿½ï¿½ï¿½
     bool is_symbol_in_first_set(const vector<Symbol> &s, const Symbol &i);
 
-    // ºÏ²¢Á½¸öÎÄ·¨·ûºÅ¼¯ºÏ£¬×ö²¢²Ù×÷
+    // ï¿½Ï²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä·ï¿½ï¿½ï¿½ï¿½Å¼ï¿½ï¿½Ï£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     void merge_two_first_set(vector<Symbol> &s1, const vector<Symbol> &s2);
 
-    // È¥³ýÄ³ÎÄ·¨·ûºÅ¼¯ºÏÖÐµÄepsilon·ûºÅ
+    // È¥ï¿½ï¿½Ä³ï¿½Ä·ï¿½ï¿½ï¿½ï¿½Å¼ï¿½ï¿½ï¿½ï¿½Ðµï¿½epsilonï¿½ï¿½ï¿½ï¿½
     vector<Symbol> remove_epsilon(const vector<Symbol> &s);
 
-    // ÅÐ¶ÏÄ³¸öItemLineÊÇ·ñÔÚÄ³¸öItemÖÐ
+    // ï¿½Ð¶ï¿½Ä³ï¿½ï¿½ItemLineï¿½Ç·ï¿½ï¿½ï¿½Ä³ï¿½ï¿½Itemï¿½ï¿½
     bool is_item_line_in_item(const ItemLine &il, const vector<ItemLine> &vil);
 
-    // ÅÐ¶ÏÄ³¸öItemÊÇ·ñÒÑ´æÔÚ(ÓÚitemsÖÐ£©
+    // ï¿½Ð¶ï¿½Ä³ï¿½ï¿½Itemï¿½Ç·ï¿½ï¿½Ñ´ï¿½ï¿½ï¿½(ï¿½ï¿½itemsï¿½Ð£ï¿½
     Item is_item_exist(const Item &i);
 
-    // ÅÐ¶ÏÄ³¸öSymbolÊÇ·ñÒÑ´æÔÚ£¨ÓÚsymbolsÖÐ£©
+    // ï¿½Ð¶ï¿½Ä³ï¿½ï¿½Symbolï¿½Ç·ï¿½ï¿½Ñ´ï¿½ï¿½Ú£ï¿½ï¿½ï¿½symbolsï¿½Ð£ï¿½
     bool is_symbol_exsit(const Symbol &);
 
     // string + int
@@ -89,13 +89,13 @@ private:
     // string.split(delim)
     vector<string> string_split(const string &s, char delim);
 
-    // ´ÓYaccFront×ª»»µ½YaccManger
+    // ï¿½ï¿½YaccFront×ªï¿½ï¿½ï¿½ï¿½YaccManger
     void convert_from_front_to_manager(char *);
 
-	// ´òÓ¡ItemLine
+	// ï¿½ï¿½Ó¡ItemLine
 	void print_item_line(const ItemLine &il);
 
-	// ´òÓ¡Item
+	// ï¿½ï¿½Ó¡Item
 	void print_item(const Item &item);
 };
 
